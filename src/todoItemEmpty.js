@@ -18,7 +18,7 @@ export default class TodoItemEmpty extends Component {
         />
         <input
           id="click"
-          onChange={() => this.props.handleChange(this.props.event)}
+          onChange={(event) => this.props.handleChange(event)}
           //   style={this.props.item.completed ? completedStyle : null}
         >
           {/* {this.props.text} */}
