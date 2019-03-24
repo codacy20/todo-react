@@ -27,33 +27,38 @@ export default class App extends Component {
     });
   }
 
-  handleChangeText = (event) => {
+  handleChangeText = (event, key2) => {
     console.log("here:" + event.currentTarget.value);
+    console.log("here:" + key2);
     this.setState({
       todos: [
         ...this.state.todos,
         {
-          
+          id: key2,
+          text: event.currentTarget.value,
+          completed: false
         }
       ]
-    })
+    });
 
     // const target = event.target;
     // console.log(target.value);
-  }
+  };
 
   render() {
     var todoItems = this.state.todos.map(item => (
       <TodoItem key={item.id} item={item} handleChange={this.handleChange} />
     ));
-    
-    return <div className="todo-list">
-    {todoItems}
-    <TodoItemEmpty
-        handleChange={this.handleChangeText}
-        key={todoItems.length + 1}
-        key2={todoItems.length + 1}
-      />
-    </div>;
+
+    return (
+      <div className="todo-list">
+        {todoItems}
+        <TodoItemEmpty
+          handleChange={this.handleChangeText}
+          key={todoItems.length + 1}
+          key2={todoItems.length + 1}
+        />
+      </div>
+    );
   }
 }

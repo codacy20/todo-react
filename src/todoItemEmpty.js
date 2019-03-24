@@ -4,7 +4,7 @@ export default class TodoItemEmpty extends Component {
   render() {
     const completedStyle = {
       fontStyle: "italic",
-      color: "#A9A9A9",
+      color: "#A9A9A9"
     };
 
     return (
@@ -17,7 +17,7 @@ export default class TodoItemEmpty extends Component {
         />
         <input
           id="click"
-          onChange={event => this.props.handleChange(event)}
+          onChange={event => this.props.handleChange(event, this.props.key2)}
           style={completedStyle}
         >
           {/* {this.props.text} */}
