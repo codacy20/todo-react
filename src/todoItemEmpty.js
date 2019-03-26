@@ -1,6 +1,18 @@
 import React, { Component } from "react";
 
 export default class TodoItemEmpty extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      inputValue: ""
+    };
+  }
+
+  handleClick = () => {
+    this.props.handleChange(this.state.inputValue, this.props.itemId)
+
+    this.setState({ inputValue: "" })
+  }
   render() {
     const completedStyle = {
       fontStyle: "italic",
@@ -17,11 +29,21 @@ export default class TodoItemEmpty extends Component {
         />
         <input
           id="click"
-          onChange={event => this.props.handleChange(event, this.props.key2)}
+          type="text"
+          value={this.state.inputValue}
+          onChange={event =>
+            this.setState({ inputValue: event.currentTarget.value })
+          }
           style={completedStyle}
+        />
+        <button
+          onClick={() =>
+            this.handleClick()
+          }
         >
-          {/* {this.props.text} */}
-        </input>
+          Press
+        </button>
+        {/* {this.props.text} */}
       </div>
     );
   }

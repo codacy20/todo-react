@@ -14,6 +14,10 @@ export default class App extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  handleCLick = () => {
+
+  }
+
   handleChange(id) {
     console.log("yay" + id);
     this.setState(prevState => {
@@ -27,15 +31,15 @@ export default class App extends Component {
     });
   }
 
-  handleChangeText = (event, key2) => {
-    console.log("here:" + event.currentTarget.value);
-    console.log("here:" + key2);
+  handleChangeText = (value, id) => {
+    console.log("here:" + value);
+    console.log(`here ${id}`);
     this.setState({
       todos: [
         ...this.state.todos,
         {
-          id: key2,
-          text: event.currentTarget.value,
+          id,
+          text: value,
           completed: false
         }
       ]
@@ -51,14 +55,14 @@ export default class App extends Component {
     ));
 
     return (
-      <div className="todo-list">
+      <template className="todo-list">
         {todoItems}
         <TodoItemEmpty
           handleChange={this.handleChangeText}
-          key={todoItems.length + 1}
-          key2={todoItems.length + 1}
+          // key={todoItems.length + 1}
+          itemId={todoItems.length + 1}
         />
-      </div>
+      </template>
     );
   }
 }
